@@ -1,0 +1,10 @@
+{
+  "name": "dataStructures",
+  "version": "1.0.0",
+  "description": "data structures",
+  "main": "build/index.js",
+  "repository": "https://github.com/mrpiggy97/dataStructures.git",
+  "author": "mrpiggy97 <fabyjesusrivas10@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
