@@ -6,13 +6,7 @@ class MyArray {
         this.data = {};
     }
     Get(index) {
-        if (index >= this.length) {
-            console.error("index is out of bound");
-            return "";
-        }
-        else {
-            return this.data[index];
-        }
+        return this.data[index];
     }
     Push(newMember) {
         this.data[this.length] = newMember;
@@ -34,6 +28,27 @@ class MyArray {
             this.length = this.length - 1;
             this.data = newArray;
         }
+    }
+    addToStart(member) {
+        let newArray = {};
+        let currentIndex = 1;
+        newArray[0] = member;
+        for (let i = 0; i < this.length; i++) {
+            newArray[currentIndex] = this.data[i];
+            currentIndex = currentIndex + 1;
+        }
+        this.data = newArray;
+        this.length = this.length + 1;
+    }
+    removeFirst() {
+        let newArray = {};
+        let currentIndex = 0;
+        for (let i = 1; i < this.length; i++) {
+            newArray[currentIndex] = this.data[i];
+            currentIndex = currentIndex + 1;
+        }
+        this.data = newArray;
+        this.length = this.length - 1;
     }
     PrintMembers() {
         let formattedString = "";
