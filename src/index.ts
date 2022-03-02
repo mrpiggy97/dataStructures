@@ -1,16 +1,8 @@
 import MyArray from "./arrays/array";
+import HashTable from './hashes/HashTable'
 
-let arry : MyArray = new MyArray()
-arry.Push("nyahallo")
-arry.Push("yahallo")
-arry.Push("bruh")
-arry.Push("damn")
-arry.PrintMembers()
-console.log(arry.length)
-arry.Delete(0)
-console.log(arry.length)
-arry.PrintMembers()
+let arry : MyArray<string> = new MyArray()
+console.log(arry)
 
-for (let i = 0; i < arry.length; i++){
-    console.log(arry.data[i])
-}
+let myTable : HashTable<string> = new HashTable()
+myTable.set("name","john")
