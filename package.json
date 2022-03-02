@@ -6,5 +6,12 @@
   "repository": "https://github.com/mrpiggy97/dataStructures.git",
   "author": "mrpiggy97 <fabyjesusrivas10@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "@types/jest": "^27.4.1"
+  },
+  "scripts": {"test": "jest"}
 }
