@@ -11,7 +11,7 @@ export default class HashTable<ValueType>{
     public hashMethod(key : string) : number{
         let hash : number = 0
         for( let i = 0; i < key.length; i++){
-            hash = (hash + key.charCodeAt(i) * i) % this.data.length + 20
+            hash = (hash + key.charCodeAt(i) * i) % this.data.length 
         }
         return hash
     }
@@ -19,33 +19,51 @@ export default class HashTable<ValueType>{
     public set(key : string, value : ValueType){
         let address : number = this.hashMethod(key)
         if(!this.data[address]){
-            this.data[address] = [{key : key, value : value}]
-        }else{
-            this.data[address].push({key : key, value : value})
+            this.data[address] = []
         }
+        this.data[address].push({key : key, value : value})
     }
 
-    public get(key : string){
+    public get(key : string) : Hash<ValueType>[]{
         let address : number = this.hashMethod(key)
         let currentBucket : Hash<ValueType>[] = this.data[address]
-        if(currentBucket){
-            return currentBucket[0]
-        }
+        return currentBucket
     }
 
-    public getBucketMember(index : number,key : string) : Hash<ValueType>{
-        let address : number = this.hashMethod(key)
-        let currentBucket : Hash<ValueType>[] = this.data[address]
-        return currentBucket[index]
-    }
-
-    public deleteBucket(key : string){
+    public deleteBucket(bucket : Hash<ValueType>[]){
         let newData : Hash<ValueType>[][] = []
         this.data.forEach((member : Hash<ValueType>[]) : void => {
-            if (member[0].key !== key){
+            if (member !== bucket){
+                console.log(member !== bucket,member,bucket)
                 newData.push(member)
             }
         })
         this.data = newData
     }
+
+    public delete(key : string){
+        let address : number = this.hashMethod(key)
+        let bucket : Hash<ValueType>[] = this.get(key)
+        let newBucketData : Hash<ValueType>[] = []
+        bucket.map((member : Hash<ValueType>) : void => {
+            if (member.key !== key){
+                newBucketData.push(member)
+            }
+        })
+        this.data[address] = newBucketData
+        if(this.data[address].length === 0){
+            this.deleteBucket(this.data[address])
+        }
+    }
+
+    public getAllBucketKeys(key : string) : string[]{
+        let bucket : Hash<ValueType>[] = this.get(key)
+        let keys : string[] = []
+        bucket.map((member : Hash<ValueType>) : void => {
+            keys.push(member.key)
+        })
+        return keys
+    }
 }
+
+export {Hash}

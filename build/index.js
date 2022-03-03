@@ -9,3 +9,7 @@ let arry = new array_1.default();
 console.log(arry);
 let myTable = new HashTable_1.default();
 myTable.set("name", "john");
+myTable.set("name", "adams");
+myTable.set("county", "orange county");
+let bucket = myTable.get("county");
+console.log(bucket);
