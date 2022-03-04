@@ -34,7 +34,6 @@ export default class HashTable<ValueType>{
         let newData : Hash<ValueType>[][] = []
         this.data.forEach((member : Hash<ValueType>[]) : void => {
             if (member !== bucket){
-                console.log(member !== bucket,member,bucket)
                 newData.push(member)
             }
         })

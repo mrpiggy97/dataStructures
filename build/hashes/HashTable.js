@@ -27,7 +27,6 @@ class HashTable {
         let newData = [];
         this.data.forEach((member) => {
             if (member !== bucket) {
-                console.log(member !== bucket, member, bucket);
                 newData.push(member);
             }
         });
