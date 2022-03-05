@@ -15,9 +15,31 @@ function testSingleLinkedList() {
     let currentNode = mySingleLinkedList.head;
     if (currentNode) {
         while (currentNode !== null) {
-            console.log(currentNode);
             currentNode = currentNode.next;
         }
     }
 }
+function testSingleLinkedListDelete() {
+    var _a, _b;
+    let mySingleLinkedList = new single_1.default(1);
+    for (let i = 2; i <= 7; i++) {
+        mySingleLinkedList.append(i);
+    }
+    expect(mySingleLinkedList.length).toBe(7);
+    mySingleLinkedList.delete(2);
+    expect(mySingleLinkedList.length).toBe(6);
+    expect((_a = mySingleLinkedList.head.next) === null || _a === void 0 ? void 0 : _a.value).toBe(3);
+    mySingleLinkedList.delete(1);
+    expect(mySingleLinkedList.head.value).toBe(3);
+    mySingleLinkedList.delete(5);
+    let nodeToTest = mySingleLinkedList.getNode(4);
+    if (nodeToTest) {
+        expect((_b = nodeToTest.next) === null || _b === void 0 ? void 0 : _b.value).toBe(6);
+    }
+    mySingleLinkedList.delete(7);
+    expect(mySingleLinkedList.tail.next).toBe(null);
+    expect(mySingleLinkedList.tail.value).toBe(6);
+    expect(mySingleLinkedList.length).toBe(3);
+}
 test("tests that single linked list works as expected", testSingleLinkedList);
+test("delete method from Single", testSingleLinkedListDelete);
