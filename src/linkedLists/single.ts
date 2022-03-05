@@ -30,7 +30,7 @@ export default class Single{
         this.length = this.length + 1
     }
     public getNode(indexValue : number) : Node | null{
-        let currentNode : Node | null = this.head.next
+        let currentNode : Node | null = this.head
         if (currentNode){
             while(currentNode.value !== indexValue){
                 let nextNode : Node | null = currentNode.next
@@ -53,6 +53,51 @@ export default class Single{
             previousNode.next = newNode
             newNode.next = nodeToReplace
             this.length = this.length + 1            
+        }else{
+            console.error("there is no node ")
+        }
+    }
+    public getPreviousNode(node : Node) : Node | null{
+        if(this.length < 1){
+            console.error("there are no elements to delete")
+            return null
+        }
+
+        let currentNode : Node | null = this.head
+        while(currentNode){
+            if (currentNode.next === null){
+                return null
+            }
+            else if(currentNode.next !== node && currentNode.next !== null){
+                currentNode = currentNode.next
+            }
+            else if(currentNode.next === node){
+                break
+            }
+        }
+        return currentNode
+    }
+
+    public delete(nodeValue : number) : void{
+        let nodeToDelete : Node | null = this.getNode(nodeValue)
+        if(nodeToDelete){
+            let nextNode : Node | null = nodeToDelete.next
+            let previousNode : Node | null = this.getPreviousNode(nodeToDelete)
+            if(previousNode){
+                if(nextNode){
+                    previousNode.next = nextNode
+                }else{
+                    previousNode.next = null
+                    this.tail = previousNode
+                }
+            }else{
+                if(this.head.next){
+                    this.head = this.head.next
+                }
+            }
+            this.length = this.length - 1
+        }else{
+            console.error("there is no node with such value")
         }
     }
 }
