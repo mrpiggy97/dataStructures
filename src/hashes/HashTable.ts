@@ -15,7 +15,7 @@ export default class HashTable<ValueType>{
         }
         return hash
     }
-
+    //set a value for this.data[address] (address will be set with key)
     public set(key : string, value : ValueType){
         let address : number = this.hashMethod(key)
         if(!this.data[address]){
@@ -23,13 +23,13 @@ export default class HashTable<ValueType>{
         }
         this.data[address].push({key : key, value : value})
     }
-
+    //get value from address that comes from key
     public get(key : string) : Hash<ValueType>[]{
         let address : number = this.hashMethod(key)
         let currentBucket : Hash<ValueType>[] = this.data[address]
         return currentBucket
     }
-
+    //delete entire array that comes from this.data[address]
     public deleteBucket(bucket : Hash<ValueType>[]){
         let newData : Hash<ValueType>[][] = []
         this.data.forEach((member : Hash<ValueType>[]) : void => {
@@ -39,7 +39,7 @@ export default class HashTable<ValueType>{
         })
         this.data = newData
     }
-
+    //delete all members from this.data[address] with key <key>
     public delete(key : string){
         let address : number = this.hashMethod(key)
         let bucket : Hash<ValueType>[] = this.get(key)
@@ -54,7 +54,7 @@ export default class HashTable<ValueType>{
             this.deleteBucket(this.data[address])
         }
     }
-
+    //get all the bucket keys inside this.data[address]
     public getAllBucketKeys(key : string) : string[]{
         let bucket : Hash<ValueType>[] = this.get(key)
         let keys : string[] = []

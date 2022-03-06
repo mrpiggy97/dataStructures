@@ -17,10 +17,11 @@ export default class Stack{
         this.bottom = null
         this.length = 0
     }
-
+    //return last element inserted into Stack
     public peek() : StackNode | null{
         return this.top
     }
+    //introduce new element at the end of stack
     public push(value : number){
         let newNode : StackNode | null = new StackNode(value)
         if(this.length === 0){
@@ -36,6 +37,7 @@ export default class Stack{
         }
         this.length = this.length + 1
     }
+    //delete last element introduced to Stack
     public pop(){
         if(this.length === 0){
             console.error("cannot pop last element if Stack is empty")

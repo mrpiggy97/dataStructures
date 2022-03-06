@@ -15,6 +15,7 @@ class Double {
         this.tail = this.head;
         this.length = 1;
     }
+    //introduce element to end of LinkedList
     append(value) {
         let newDoubleNode = new DoubleNode(value);
         newDoubleNode.previous = this.tail;
@@ -22,6 +23,7 @@ class Double {
         this.tail = newDoubleNode;
         this.length = this.length + 1;
     }
+    //introduce element to beggining of LinkedList
     preappend(value) {
         let newDoubleNode = new DoubleNode(value);
         newDoubleNode.next = this.head;
@@ -31,6 +33,7 @@ class Double {
         this.head = newDoubleNode;
         this.length = this.length + 1;
     }
+    //get node with value indexValue
     getDoubleNode(indexValue) {
         let currentDoubleNode = this.head;
         if (currentDoubleNode) {
@@ -49,6 +52,7 @@ class Double {
         }
         return currentDoubleNode;
     }
+    //introduce element after node with value previousDoubleNodeValue
     insertDoubleNodeAfter(previousDoubleNodeValue, value) {
         let newDoubleNode = new DoubleNode(value);
         let previousDoubleNode = this.getDoubleNode(previousDoubleNodeValue);
@@ -66,6 +70,7 @@ class Double {
             console.error("there is no DoubleNode ");
         }
     }
+    //delete element with value DoubleNodeValue
     delete(DoubleNodeValue) {
         let DoubleNodeToDelete = this.getDoubleNode(DoubleNodeValue);
         if (DoubleNodeToDelete) {

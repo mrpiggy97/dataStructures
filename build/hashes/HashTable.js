@@ -11,6 +11,7 @@ class HashTable {
         }
         return hash;
     }
+    //set a value for this.data[address] (address will be set with key)
     set(key, value) {
         let address = this.hashMethod(key);
         if (!this.data[address]) {
@@ -18,11 +19,13 @@ class HashTable {
         }
         this.data[address].push({ key: key, value: value });
     }
+    //get value from address that comes from key
     get(key) {
         let address = this.hashMethod(key);
         let currentBucket = this.data[address];
         return currentBucket;
     }
+    //delete entire array that comes from this.data[address]
     deleteBucket(bucket) {
         let newData = [];
         this.data.forEach((member) => {
@@ -32,6 +35,7 @@ class HashTable {
         });
         this.data = newData;
     }
+    //delete all members from this.data[address] with key <key>
     delete(key) {
         let address = this.hashMethod(key);
         let bucket = this.get(key);
@@ -46,6 +50,7 @@ class HashTable {
             this.deleteBucket(this.data[address]);
         }
     }
+    //get all the bucket keys inside this.data[address]
     getAllBucketKeys(key) {
         let bucket = this.get(key);
         let keys = [];

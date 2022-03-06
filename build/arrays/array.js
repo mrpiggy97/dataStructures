@@ -5,13 +5,16 @@ class MyArray {
         this.length = 0;
         this.data = {};
     }
+    //get element from index <index>
     Get(index) {
         return this.data[index];
     }
+    //introduce element with index <this.length>
     Push(newMember) {
         this.data[this.length] = newMember;
         this.length = this.length + 1;
     }
+    //delete element that comes from index <index>
     Delete(index) {
         if (index >= this.length) {
             console.error("index out of bounds");
@@ -29,6 +32,7 @@ class MyArray {
             this.data = newArray;
         }
     }
+    //add element to beggining of array
     addToStart(member) {
         let newArray = {};
         let currentIndex = 1;
@@ -40,6 +44,7 @@ class MyArray {
         this.data = newArray;
         this.length = this.length + 1;
     }
+    //remove first element from array
     removeFirst() {
         let newArray = {};
         let currentIndex = 0;
@@ -50,6 +55,7 @@ class MyArray {
         this.data = newArray;
         this.length = this.length - 1;
     }
+    //print all members from array
     PrintMembers() {
         let formattedString = "";
         for (let i = 0; i < this.length; i++) {

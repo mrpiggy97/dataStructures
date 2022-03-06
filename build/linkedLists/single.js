@@ -14,18 +14,21 @@ class Single {
         this.tail = this.head;
         this.length = 1;
     }
+    //introduce element to end of LinkedList
     append(value) {
         let newNode = new Node(value);
         this.tail.next = newNode;
         this.tail = newNode;
         this.length = this.length + 1;
     }
+    //introduce element to beggining of LinkedList
     preappend(value) {
         let newNode = new Node(value);
         newNode.next = this.head;
         this.head = newNode;
         this.length = this.length + 1;
     }
+    //get node with value indexValue
     getNode(indexValue) {
         let currentNode = this.head;
         if (currentNode) {
@@ -44,6 +47,7 @@ class Single {
         }
         return currentNode;
     }
+    //insert element after element with value previousNodeValue
     insertNodeAfter(previousNodeValue, value) {
         let newNode = new Node(value);
         let previousNode = this.getNode(previousNodeValue);
@@ -57,6 +61,7 @@ class Single {
             console.error("there is no node ");
         }
     }
+    //get element that becomes before element node
     getPreviousNode(node) {
         if (this.length < 1) {
             console.error("there are no elements to delete");
@@ -76,6 +81,7 @@ class Single {
         }
         return currentNode;
     }
+    //delete element from LinkedList with value nodeValue
     delete(nodeValue) {
         let nodeToDelete = this.getNode(nodeValue);
         if (nodeToDelete) {

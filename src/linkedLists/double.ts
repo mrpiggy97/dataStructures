@@ -18,7 +18,7 @@ export default class Double{
         this.tail = this.head
         this.length = 1
     }
-
+    //introduce element to end of LinkedList
     public append(value : number) : void{
         let newDoubleNode : DoubleNode = new DoubleNode(value)
         newDoubleNode.previous = this.tail
@@ -26,6 +26,7 @@ export default class Double{
         this.tail = newDoubleNode
         this.length = this.length + 1
     }
+    //introduce element to beggining of LinkedList
     public preappend(value : number) : void{
         let newDoubleNode : DoubleNode = new DoubleNode(value)
         newDoubleNode.next = this.head
@@ -35,6 +36,7 @@ export default class Double{
         this.head = newDoubleNode
         this.length = this.length + 1
     }
+    //get node with value indexValue
     public getDoubleNode(indexValue : number) : DoubleNode | null{
         let currentDoubleNode : DoubleNode | null = this.head
         if (currentDoubleNode){
@@ -51,6 +53,7 @@ export default class Double{
         }
         return currentDoubleNode
     }
+    //introduce element after node with value previousDoubleNodeValue
     public insertDoubleNodeAfter(previousDoubleNodeValue : number, value : number) : void{
         let newDoubleNode : DoubleNode = new DoubleNode(value)
         let previousDoubleNode : DoubleNode | null = this.getDoubleNode(previousDoubleNodeValue)
@@ -67,6 +70,7 @@ export default class Double{
             console.error("there is no DoubleNode ")
         }
     }
+    //delete element with value DoubleNodeValue
     public delete(DoubleNodeValue : number) : void{
         let DoubleNodeToDelete : DoubleNode | null = this.getDoubleNode(DoubleNodeValue)
         if(DoubleNodeToDelete){

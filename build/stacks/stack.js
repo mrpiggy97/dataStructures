@@ -14,9 +14,11 @@ class Stack {
         this.bottom = null;
         this.length = 0;
     }
+    //return last element inserted into Stack
     peek() {
         return this.top;
     }
+    //introduce new element at the end of stack
     push(value) {
         let newNode = new StackNode(value);
         if (this.length === 0) {
@@ -33,6 +35,7 @@ class Stack {
         }
         this.length = this.length + 1;
     }
+    //delete last element introduced to Stack
     pop() {
         if (this.length === 0) {
             console.error("cannot pop last element if Stack is empty");
